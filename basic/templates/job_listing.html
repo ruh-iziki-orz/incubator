@@ -230,10 +230,10 @@
                         function freelancing(value){
                             var verify = document.getElementById(String(value) + '_job');
                             if(verify.checked)
-                                window.location = "/job_listing_filter/" + String(value) + "/{{date_posting}}/{{sort_by}}";
+                                window.location = "/job_listing_filter/" + String(value) + "/{{date_posting}}/{{sort_by}}/{{key}}";
                             else
                             {
-                                window.location = "/job_listing_filter/any/{{date_posting}}/{{sort_by}}";
+                                window.location = "/job_listing_filter/any/{{date_posting}}/{{sort_by}}/{{key}}";
                             }
                         }
 
@@ -241,23 +241,23 @@
                         function posted(value){
                             var verify = document.getElementById(String(value) + '_date');
                             if(verify.checked)
-                                window.location = "/job_listing_filter/{{job_type}}/" + String(value) + "/{{sort_by}}";
+                                window.location = "/job_listing_filter/{{job_type}}/" + String(value) + "/{{sort_by}}/{{key}}";
                             else
                             {
-                                window.location = "/job_listing_filter/{{job_type}}/any/{{sort_by}}";
+                                window.location = "/job_listing_filter/{{job_type}}/any/{{sort_by}}/{{key}}";
                             }
                         }
 
 
-                        function sort_by(value){
-                            var verify = document.getElementById(String(value));
-                            if(verify.checked)
-                                window.location = "/job_listing_filter/{{job_type}}/{{date_posting}}/{{sort_by}}"+String(value);
-                            else
-                            {
-                                window.location = "/person_search_show/{{skill}}/{{exp}}/NA";
-                            }
-                        }
+                        // function sort_by(value){
+                        //     var verify = document.getElementById(String(value));
+                        //     if(verify.checked)
+                        //         window.location = "/job_listing_filter/{{job_type}}/{{date_posting}}/{{sort_by}}"+String(value);
+                        //     else
+                        //     {
+                        //         window.location = "/person_search_show/{{skill}}/{{exp}}/NA";
+                        //     }
+                        // }
 
                         document.getElementById('{{job_type}}_job').checked = true
                         document.getElementById('{{date_posting}}_date').checked = true
@@ -349,7 +349,7 @@
                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                           <!-- logo -->
                           <div class="footer-logo mb-20">
-                            <a href="index.html"><img src="{% static 'job/assets/img/logo/logo2_footer.png' %}" alt=""></a>
+                            <!-- <a href="index.html"><img src="{% static 'job/assets/img/logo/logo2_footer.png' %}" alt=""></a> -->
                           </div>
                        </div>
                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">

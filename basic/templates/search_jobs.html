@@ -77,22 +77,23 @@
                         <div class="row">
                             <div class="col-xl-8">
                                 <!-- form -->
-                                <form action="#" class="search-box">
+                                <form action="/search_jobs_keyword" class="search-box" id = "search_form" method="post">
+                                    {% csrf_token %}
                                     <div class="input-form">
-                                        <input type="text" placeholder="Job Tittle or keyword">
+                                        <input type="text" placeholder="Job Tittle or keyword" name = "keyword">
                                     </div>
                                     <div class="select-form">
                                         <div class="select-itms">
                                             <select name="select" id="select1">
-                                                <option value="">Location BD</option>
-                                                <option value="">Location PK</option>
-                                                <option value="">Location US</option>
-                                                <option value="">Location UK</option>
+                                                <option value="" selected>India</option>
+                                                <!-- <option value="">Location PK</option> -->
+                                                <!-- <option value="">Location US</option> -->
+                                                <!-- <option value="">Location UK</option> -->
                                             </select>
                                         </div>
                                     </div>
                                     <div class="search-form">
-                                        <a href="#">Find job</a>
+                                        <a href="javascript:;" onclick="document.getElementById('search_form').submit();">Find job</a>
                                     </div>	
                                 </form>	
                             </div>
@@ -253,10 +254,10 @@
                         <div class="single-job-items mb-30">
                             <div class="job-items">
                                 <div class="company-img">
-                                    <a href="job_details.html"><img src="{% static 'job/assets/img/icon/job-list1.png' %}" alt=""></a>
+                                    <a href="/job_view/{{i.id}}"><img src="{% static 'job/assets/img/icon/job-list1.png' %}" alt=""></a>
                                 </div>
                                 <div class="job-tittle">
-                                    <a href="job_details.html"><h4>{{i.role}}</h4></a>
+                                    <a href="/job_view/{{i.id}}"><h4>{{i.role}}</h4></a>
                                     <ul>
                                         <li>{{i.catagory}}</li>
                                         <li><i class="fas fa-map-marker-alt"></i>{{i.country}}</li>
@@ -265,7 +266,7 @@
                                 </div>
                             </div>
                             <div class="items-link f-right">
-                                <a href="job_details.html">Full Time</a>
+                                <a href="/job_view/{{i.id}}">Full Time</a>
                                 <span>{{i.date}}</span>
                             </div>
                         </div>
@@ -559,7 +560,7 @@
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                         <!-- logo -->
                         <div class="footer-logo mb-20">
-                        <a href="index.html"><img src="{% static 'job/assets/img/logo/logo2_footer.png' %}" alt=""></a>
+                        <!-- <a href="index.html"><img src="{% static 'job/assets/img/logo/logo2_footer.png' %}" alt=""></a> -->
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">

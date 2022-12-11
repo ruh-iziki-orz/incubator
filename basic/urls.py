@@ -46,7 +46,7 @@ urlpatterns = [
 
     path('job_listing',views.job_listing, name='job_listing'),
 
-    path('job_listing_filter/<str:job>/<str:date>/<str:sort>',views.job_listing_filter, name='job_listing_filter'),
+    path('job_listing_filter/<str:job>/<str:date>/<str:sort>/<str:search_key>',views.job_listing_filter, name='job_listing_filter'),
 
     path('job_view/<str:id>',views.job_view, name='job_view'),   
     
@@ -55,7 +55,11 @@ urlpatterns = [
     path('revenue_add',views.revenue_add, name='revenue_add'),
     
     path('job_posting_done',views.job_posting_done, name='job_posting_done'),
+
     
+    
+    path('search_jobs_keyword',views.search_jobs_keyword, name='search_jobs_keyword'),
+
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

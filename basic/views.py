@@ -531,60 +531,113 @@ def job_listing(request):
     return render(request, 'job_listing.html', context=context)
 
 
-def job_listing_filter(request,job,date,sort):
+def job_listing_filter(request,job,date,sort,search_key):
     
     job_type = str(job)
     date_posting = str(date)
     sort_by = str(sort)
-    
-    if job_type == 'any':
-        if date_posting == 'any':
-            if sort_by == 'any':
-                obj = company_job.objects.all().order_by('-date')
-            else:
-                obj = company_job.objects.all().order_by('-salary')
-        elif date_posting == '0':
-            checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5)).date()
-            obj = company_job.objects.filter(date = checkinDate)
-        elif date_posting == '1':
-            checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=1)).date()
-            obj = company_job.objects.filter(date__gte = checkinDate)
-        elif date_posting == '2':
-            checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=2)).date()
-            obj = company_job.objects.filter(date__gte = checkinDate)
-        elif date_posting == '3':
-            checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=3)).date()
-            obj = company_job.objects.filter(date__gte = checkinDate)
-        elif date_posting == '5':
-            checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=5)).date()
-            obj = company_job.objects.filter(date__gte = checkinDate)
-        elif date_posting == '10':
-            checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=10)).date()
-            obj = company_job.objects.filter(date__gte = checkinDate)
+    key = str(search_key)
+    print(key)
+    print(" asdasdsad ")
+    if key == 'any':
+        print(" sadasd ")
+        if job_type == 'any':
+            if date_posting == 'any':
+                if sort_by == 'any':
+                    obj = company_job.objects.all().order_by('-date')
+                else:
+                    obj = company_job.objects.all().order_by('-salary')
+            elif date_posting == '0':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5)).date()
+                obj = company_job.objects.filter(date = checkinDate)
+            elif date_posting == '1':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=1)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate)
+            elif date_posting == '2':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=2)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate)
+            elif date_posting == '3':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=3)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate)
+            elif date_posting == '5':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=5)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate)
+            elif date_posting == '10':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=10)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate)
+        else:
+            if date_posting == 'any':
+                if sort_by == 'any':
+                    obj = company_job.objects.filter(equity = job_type).order_by('-date')
+                else:
+                    obj = company_job.objects.filter(equity = job_type).order_by('-salary')
+            elif date_posting == '0':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5)).date()
+                obj = company_job.objects.filter(date = checkinDate,equity = job_type)
+            elif date_posting == '1':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=1)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate,equity = job_type)
+            elif date_posting == '2':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=2)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate,equity = job_type)
+            elif date_posting == '3':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=3)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate,equity = job_type)
+            elif date_posting == '5':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=5)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate,equity = job_type)
+            elif date_posting == '10':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=10)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate,equity = job_type)
     else:
-        if date_posting == 'any':
-            if sort_by == 'any':
-                obj = company_job.objects.filter(equity = job_type).order_by('-date')
-            else:
-                obj = company_job.objects.filter(equity = job_type).order_by('-salary')
-        elif date_posting == '0':
-            checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5)).date()
-            obj = company_job.objects.filter(date = checkinDate,equity = job_type)
-        elif date_posting == '1':
-            checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=1)).date()
-            obj = company_job.objects.filter(date__gte = checkinDate,equity = job_type)
-        elif date_posting == '2':
-            checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=2)).date()
-            obj = company_job.objects.filter(date__gte = checkinDate,equity = job_type)
-        elif date_posting == '3':
-            checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=3)).date()
-            obj = company_job.objects.filter(date__gte = checkinDate,equity = job_type)
-        elif date_posting == '5':
-            checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=5)).date()
-            obj = company_job.objects.filter(date__gte = checkinDate,equity = job_type)
-        elif date_posting == '10':
-            checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=10)).date()
-            obj = company_job.objects.filter(date__gte = checkinDate,equity = job_type)
+        if job_type == 'any':
+            if date_posting == 'any':
+                if sort_by == 'any':
+                    obj = company_job.objects.filter(role__contains = key).order_by('-date')
+                else:
+                    obj = company_job.objects.filter(role__contains = key).order_by('-salary')
+            elif date_posting == '0':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5)).date()
+                obj = company_job.objects.filter(date = checkinDate,role__contains = key)
+            elif date_posting == '1':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=1)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate,role__contains = key)
+            elif date_posting == '2':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=2)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate,role__contains = key)
+            elif date_posting == '3':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=3)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate,role__contains = key)
+            elif date_posting == '5':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=5)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate,role__contains = key)
+            elif date_posting == '10':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=10)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate,role__contains = key)
+        else:
+            if date_posting == 'any':
+                if sort_by == 'any':
+                    obj = company_job.objects.filter(equity = job_type,role__contains = key).order_by('-date')
+                else:
+                    obj = company_job.objects.filter(equity = job_type,role__contains = key).order_by('-salary')
+            elif date_posting == '0':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5)).date()
+                obj = company_job.objects.filter(date = checkinDate,equity = job_type,role__contains = key)
+            elif date_posting == '1':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=1)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate,equity = job_type,role__contains = key)
+            elif date_posting == '2':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=2)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate,equity = job_type,role__contains = key)
+            elif date_posting == '3':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=3)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate,equity = job_type,role__contains = key)
+            elif date_posting == '5':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=5)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate,equity = job_type,role__contains = key)
+            elif date_posting == '10':
+                checkinDate=(datetime.now(timezone.utc) +  timedelta(hours=5.5) - timedelta(days=10)).date()
+                obj = company_job.objects.filter(date__gte = checkinDate,equity = job_type,role__contains = key)
 
     print(obj)
     job_count = obj.count()
@@ -595,6 +648,7 @@ def job_listing_filter(request,job,date,sort):
         'date_posting':date_posting,
         'job_count':job_count,
         'sort_by':sort_by,
+        'key':key,
             }
     return render(request, 'job_listing.html', context=context)
 
@@ -654,3 +708,7 @@ def job_posting_done(request):
     obj.save()
     return HttpResponseRedirect("/company")
 
+
+def search_jobs_keyword(request):
+    keyword = request.POST.get('keyword')
+    return HttpResponseRedirect("/job_listing_filter/any/any/any/"+str(keyword))
