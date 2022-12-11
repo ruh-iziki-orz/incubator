@@ -1,0 +1,455 @@
+{% load socialaccount %}
+
+{% load static %}
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+         <title>Job board HTML-5 Template </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
+		<link rel="shortcut icon" type="image/x-icon" href="{% static 'job/assets/img/favicon.ico'%}">
+
+		<!-- CSS here -->
+            <link rel="stylesheet" href="{% static 'job/assets/css/bootstrap.min.css'%}">
+            <link rel="stylesheet" href="{% static 'job/assets/css/owl.carousel.min.css'%}">
+            <link rel="stylesheet" href="{% static 'job/assets/css/price_rangs.css'%}">
+            <link rel="stylesheet" href="{% static 'job/assets/css/flaticon.css'%}">
+            <link rel="stylesheet" href="{% static 'job/assets/css/slicknav.css'%}">
+            <link rel="stylesheet" href="{% static 'job/assets/css/animate.min.css'%}">
+            <link rel="stylesheet" href="{% static 'job/assets/css/magnific-popup.css'%}">
+            <link rel="stylesheet" href="{% static 'job/assets/css/fontawesome-all.min.css'%}">
+            <link rel="stylesheet" href="{% static 'job/assets/css/themify-icons.css'%}">
+            <link rel="stylesheet" href="{% static 'job/assets/css/slick.css'%}">
+            <link rel="stylesheet" href="{% static 'job/assets/css/nice-select.css'%}">
+            <link rel="stylesheet" href="{% static 'job/assets/css/style.css'%}">
+   </head>
+
+   <body>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static 'job/assets/img/logo/logo.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+       <div class="header-area header-transparrent">
+           <div class="headder-top header-sticky">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+       </div>
+        <!-- Header End -->
+    </header>
+    <main>
+
+        <!-- Hero Area Start-->
+        <div class="slider-area ">
+            <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="{% static 'job/assets/img/hero/about.jpg' %}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap text-center">
+                                <h2>Get your job</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero Area End -->
+        <!-- Job List Area Start -->
+        <div class="job-listing-area pt-120 pb-120">
+            <div class="container">
+                <div class="row">
+                    <!-- Left content -->
+                    <div class="col-xl-3 col-lg-3 col-md-4">
+                        <div class="row">
+                            <div class="col-12">
+                                    <div class="small-section-tittle2 mb-45">
+                                    <div class="ion"> <svg 
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="20px" height="12px">
+                                    <path fill-rule="evenodd"  fill="rgb(27, 207, 107)"
+                                        d="M7.778,12.000 L12.222,12.000 L12.222,10.000 L7.778,10.000 L7.778,12.000 ZM-0.000,-0.000 L-0.000,2.000 L20.000,2.000 L20.000,-0.000 L-0.000,-0.000 ZM3.333,7.000 L16.667,7.000 L16.667,5.000 L3.333,5.000 L3.333,7.000 Z"/>
+                                    </svg>
+                                    </div>
+                                    <h4>Filter Jobs</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Job Category Listing start -->
+                        <div class="job-category-listing mb-50">
+                            <!-- single one -->
+                            <div class="single-listing">
+                                <!--  Select job items End-->
+                                <!-- select-Categories start -->
+                                <div class="select-Categories pt-80 pb-50">
+                                    <div class="small-section-tittle2">
+                                        <h4>Job Type</h4>
+                                    </div>
+                                    <label class="container">Any
+                                        <input type="checkbox" id = "any_job" onclick="freelancing('any')">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="container">Equity based
+                                        <input type="checkbox" id = "equity_job" onclick="freelancing('equity')">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="container">Freelance
+                                        <input type="checkbox" id = "free_job" onclick="freelancing('free')">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <!-- select-Categories End -->
+                            </div>
+                            <!-- single two -->
+                            <!-- single three -->
+                            <div class="single-listing">
+                                <!-- select-Categories start -->
+                                <div class="select-Categories pb-50">
+                                    <div class="small-section-tittle2">
+                                        <h4>Posted Within</h4>
+                                    </div>
+                                    <label class="container">Any
+                                        <input type="checkbox" id = "any_date" onclick="posted('any')">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="container">Today
+                                        <input type="checkbox" id = "1_date" onclick="posted('1')">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="container">Last 2 days
+                                        <input type="checkbox" id = "2_date" onclick="posted('2')">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="container">Last 3 days
+                                        <input type="checkbox" id = "3_date" onclick="posted('3')">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="container">Last 5 days
+                                        <input type="checkbox" id = "5_date" onclick="posted('5')">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="container">Last 10 days
+                                        <input type="checkbox" id = "10_date" onclick="posted('10')">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <!-- select-Categories End -->
+                            </div>
+                            
+                        </div>
+                        <!-- Job Category Listing End -->
+                    </div>
+                    <!-- Right content -->
+                    <div class="col-xl-9 col-lg-9 col-md-8">
+                        <!-- Featured_job_start -->
+                        <section class="featured-job-area">
+                            <div class="container">
+                                <!-- Count of Job list Start -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="count-job mb-35">
+                                            <span>{{job_count}} Jobs found</span>
+                                            <!-- Select job items start -->
+                                            <!-- <div class="select-job-items">
+                                                <span>Sort by</span>
+                                                <select name="select" onchange="sort_by('any')">
+                                                    <option value="any">None</option>
+                                                    <option value="increasing">Increasing Pay</option>
+                                                    <option value="decreasing">Decreasing Pay</option>
+                                                </select>
+                                            </div> -->
+                                            <!--  Select job items End-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Count of Job list End -->
+                                <!-- single-job-content -->
+                                
+                                {% for i in obj %}
+                                <div class="single-job-items mb-30">
+                                    <div class="job-items">
+                                        <div class="company-img">
+                                            <a href="/job_view/{{i.id}}"><img src="{% static 'geek.webp' %}" alt="" style="height: 100px;width: 100px;"></a>
+                                        </div>
+                                        <div class="job-tittle job-tittle2">
+                                            <a href="/job_view/{{i.id}}">
+                                                <h4>{{i.role}}</h4>
+                                            </a>
+                                            <ul>
+                                                <li>{{i.catagory}}</li>
+                                                <li><i class="fas fa-map-marker-alt"></i>{{i.country}}</li>
+                                                <li>{{i.salary}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="items-link items-link2 f-right">
+                                        <a href="/job_view/{{i.id}}">Full Time</a>
+                                        <span>{{i.date}}</span>
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                        </section>
+                        <!-- Featured_job_end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Job List Area End -->
+        <!--Pagination Start  -->
+        <!--Pagination End  -->
+        
+    </main>
+
+
+
+
+    <script>
+
+                        function freelancing(value){
+                            var verify = document.getElementById(String(value) + '_job');
+                            if(verify.checked)
+                                window.location = "/job_listing_filter/" + String(value) + "/{{date_posting}}/{{sort_by}}";
+                            else
+                            {
+                                window.location = "/job_listing_filter/any/{{date_posting}}/{{sort_by}}";
+                            }
+                        }
+
+
+                        function posted(value){
+                            var verify = document.getElementById(String(value) + '_date');
+                            if(verify.checked)
+                                window.location = "/job_listing_filter/{{job_type}}/" + String(value) + "/{{sort_by}}";
+                            else
+                            {
+                                window.location = "/job_listing_filter/{{job_type}}/any/{{sort_by}}";
+                            }
+                        }
+
+
+                        function sort_by(value){
+                            var verify = document.getElementById(String(value));
+                            if(verify.checked)
+                                window.location = "/job_listing_filter/{{job_type}}/{{date_posting}}/{{sort_by}}"+String(value);
+                            else
+                            {
+                                window.location = "/person_search_show/{{skill}}/{{exp}}/NA";
+                            }
+                        }
+
+                        document.getElementById('{{job_type}}_job').checked = true
+                        document.getElementById('{{date_posting}}_date').checked = true
+                        
+
+
+
+
+
+
+    </script>
+    <footer>
+        <!-- Footer Start-->
+        <div class="footer-area footer-bg footer-padding">
+            <div class="container">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                       <div class="single-footer-caption mb-50">
+                         <div class="single-footer-caption mb-30">
+                             <div class="footer-tittle">
+                                 <h4>About Us</h4>
+                                 <div class="footer-pera">
+                                     <p>Heaven frucvitful doesn't cover lesser dvsays appear creeping seasons so behold.</p>
+                                </div>
+                             </div>
+                         </div>
+
+                       </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Contact Info</h4>
+                                <ul>
+                                    <li>
+                                    <p>Address :Your address goes
+                                        here, your demo address.</p>
+                                    </li>
+                                    <li><a href="#">Phone : +8880 44338899</a></li>
+                                    <!-- <li><a href="#">Email : info@colorlib.com</a></li> -->
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Important Link</h4>
+                                <ul>
+                                    <li><a href="#"> View Project</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                    <li><a href="#">Testimonial</a></li>
+                                    <li><a href="#">Proparties</a></li>
+                                    <li><a href="#">Support</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Newsletter</h4>
+                                <div class="footer-pera footer-pera2">
+                                 <p>Heaven fruitful doesn't over lesser in days. Appear creeping.</p>
+                             </div>
+                             <!-- Form -->
+                             <div class="footer-form" >
+                                 <div id="mc_embed_signup">
+                                     <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                     method="get" class="subscribe_form relative mail_part">
+                                         <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
+                                         class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
+                                         onblur="this.placeholder = ' Email Address '">
+                                         <div class="form-icon">
+                                             <button type="submit" name="submit" id="newsletter-submit"
+                                             class="email_icon newsletter-submit button-contactForm"><img src="{% static 'job/assets/img/icon/form.png' %}" alt=""></button>
+                                         </div>
+                                         <div class="mt-10 info"></div>
+                                     </form>
+                                 </div>
+                             </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <!--  -->
+               <div class="row footer-wejed justify-content-between">
+                       <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                          <!-- logo -->
+                          <div class="footer-logo mb-20">
+                            <a href="index.html"><img src="{% static 'job/assets/img/logo/logo2_footer.png' %}" alt=""></a>
+                          </div>
+                       </div>
+                       <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                        <div class="footer-tittle-bottom">
+                            <span>5000+</span>
+                            <p>Talented Hunter</p>
+                        </div>
+                       </div>
+                       <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                            <div class="footer-tittle-bottom">
+                                <span>451</span>
+                                <p>Talented Hunter</p>
+                            </div>
+                       </div>
+                       <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                            <!-- Footer Bottom Tittle -->
+                            <div class="footer-tittle-bottom">
+                                <span>568</span>
+                                <p>Talented Hunter</p>
+                            </div>
+                       </div>
+               </div>
+            </div>
+        </div>
+        <!-- footer-bottom area -->
+        <div class="footer-bottom-area footer-bg">
+            <div class="container">
+                <div class="footer-border">
+                     <div class="row d-flex justify-content-between align-items-center">
+                         <div class="col-xl-10 col-lg-10 ">
+                             <div class="footer-copy-right">
+                                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by us
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                             </div>
+                         </div>
+                         <div class="col-xl-2 col-lg-2">
+                             <div class="footer-social f-right">
+                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                 <a href="#"><i class="fab fa-twitter"></i></a>
+                                 <a href="#"><i class="fas fa-globe"></i></a>
+                                 <a href="#"><i class="fab fa-behance"></i></a>
+                             </div>
+                         </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End-->
+    </footer>
+
+	<!-- JS here -->
+	
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="{% static 'job/assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="{% static 'job/assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+        <script src="{% static 'job/assets/js/popper.min.js' %}"></script>
+        <script src="{% static 'job/assets/js/bootstrap.min.js' %}"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="{% static 'job/assets/js/jquery.slicknav.min.js' %}"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Range -->
+        <script src="{% static 'job/assets/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'job/assets/js/slick.min.js' %}"></script>
+        <script src="{% static 'job/assets/js/price_rangs.js' %}"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="{% static 'job/assets/js/wow.min.js' %}"></script>
+		<script src="{% static 'job/assets/js/animated.headline.js' %}"></script>
+        <script src="{% static 'job/assets/js/jquery.magnific-popup.js' %}"></script>
+
+		<!-- Scrollup, nice-select, sticky -->
+        <script src="{% static 'job/assets/js/jquery.scrollUp.min.js' %}"></script>
+        <script src="{% static 'job/assets/js/jquery.nice-select.min.js' %}"></script>
+		<script src="{% static 'job/assets/js/jquery.sticky.js' %}"></script>
+        
+        <!-- contact js -->
+        <script src="{% static 'job/assets/js/contact.js' %}"></script>
+        <script src="{% static 'job/assets/js/jquery.form.js' %}"></script>
+        <script src="{% static 'job/assets/js/jquery.validate.min.js' %}"></script>
+        <script src="{% static 'job/assets/js/mail-script.js' %}"></script>
+        <script src="{% static 'job/assets/js/jquery.ajaxchimp.min.js' %}"></script>
+        
+		<!-- Jquery Plugins, main Jquery -->	
+        <script src="{% static 'job/assets/js/plugins.js' %}"></script>
+        <script src="{% static 'job/assets/js/main.js' %}"></script>
+        
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/638fa2dab0d6371309d2f4ea/1gjkh89sa';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+    
+    </body>
+</html>

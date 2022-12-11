@@ -1,0 +1,521 @@
+
+{% load socialaccount %}
+
+{% load static %}
+
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+<script src="https://kit.fontawesome.com/75e1a68cb8.js" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="{% static 'details/css/opensans-font.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'details/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css' %}">
+	<!-- datepicker -->
+	<link rel="stylesheet" type="text/css" href="{% static 'details/css/jquery-ui.min.css' %}">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static 'details/css/style.css' %}"/>
+
+
+	<body>
+		<div class="page-content">
+			<div class="wizard-heading">Info Page</div>
+			<div class="wizard-v6-content">
+				<div class="wizard-form">
+					
+					
+					
+					<form class="form-register" id="form-register" action="/demo" method="post">
+						
+						<input type="hidden" id = "project_to_send" name = "project_to_send" value="">
+						<input type="hidden" id = "work_to_send" name = "work_to_send" value="">
+						<input type="hidden" id = "education_to_send" name = "education_to_send" value="">
+						<input type="hidden" id = "skill_to_send" name = "skill_to_send" value="">
+						
+						<div id="form-total">
+							<!-- SECTION 1 -->
+							<h2>
+								<p class="step-icon"><span>1</span></p>
+								<span class="step-text">Personal Info</span>
+							</h2>
+							<section>
+								<div class="inner">
+									<div class="form-heading">
+										<h3>Personal Info</h3>
+										<span>1/3</span>
+									</div>
+									<div class="form-row">
+										<div class="form-holder">
+											<label class="form-row-inner">
+												<input type="text" class="form-control" id="first_name" name="first_name" required>
+												<span class="label">First Name</span>
+											</label>
+										</div>
+										<div class="form-holder">
+											<label class="form-row-inner">
+												<input type="text" class="form-control" id="last_name" name="last_name" required>
+												<span class="label">Last Name</span>
+											</label>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-holder">
+											<label class="form-row-inner">
+												<input type="text" class="form-control" id="phone" name="phone" required>
+												<span class="label">Phone Number</span>
+											</label>
+										</div>
+										<div class="form-holder">
+											<label class="form-row-inner">
+												<input type="text" name="your_email_1" id="your_email_1" class="form-control"  required>
+												<span class="label">E-Mail</span>
+											</label>
+										</div>
+									</div>
+									<div class="form-row form-row-date">
+										<div class="form-holder form-holder-2">
+											<label for="date" class="special-label">Date of Birth:</label>
+											<select name="date" id="date" class="form-control">
+												<option value="15" selected>15</option>
+												<option value="16">16</option>
+												<option value="17">17</option>
+												<option value="18">18</option>
+												<option value="19">19</option>
+												<option value="20">20</option>
+												<option value="21">21</option>
+												<option value="22">22</option>
+												<option value="23">23</option>
+												<option value="24">24</option>
+												<option value="25">25</option>
+												<option value="26">26</option>
+												<option value="27">27</option>
+												<option value="28">28</option>
+												<option value="29">29</option>
+												<option value="30">30</option>
+												<option value="31">31</option>
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+												<option value="6">6</option>
+												<option value="7">7</option>
+												<option value="8">8</option>
+												<option value="9">9</option>
+												<option value="10">10</option>
+												<option value="11">12</option>
+												<option value="13">13</option>
+												<option value="14">14</option>
+												
+												
+												
+											</select>
+											<select name="month" id="month" class="form-control">
+												<option value="Jan" selected>Jan</option>
+												<option value="Feb">Feb</option>
+												<option value="Mar">Mar</option>
+												<option value="Apr">Apr</option>
+												<option value="May">May</option>
+												<option value="June">June</option>
+												<option value="July">July</option>
+												<option value="Aug">Aug</option>
+												<option value="Sept">Sept</option>
+												<option value="Oct">Oct</option>
+												<option value="Nov">Nov</option>
+												<option value="Dec">Dec</option>
+											</select>
+											<select name="year" id="year" class="form-control">
+												<option value="2018" selected>2018</option>
+												<option value="2017">2017</option>
+												<option value="2016">2016</option>
+												<option value="2015">2015</option>
+												<option value="2014">2014</option>
+												<option value="2013">2013</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-holder form-holder-2">
+											<label class="form-row-inner">
+												<input type="text" class="form-control" id="address" name="address" required>
+												<span class="label">Address Location</span>
+											</label>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-holder form-holder-2">
+											<label class="form-row-inner">
+												<input type="text" class="form-control" id="about" name="about" required>
+												<span class="label">About</span>
+											</label>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-holder">
+											<label class="form-row-inner">
+												<input type="text" class="form-control" id="happy_clients" name="happy_clients" required>
+												<span class="label">Clients Count</span>
+											</label>
+										</div>
+										<div class="form-holder">
+											<label class="form-row-inner">
+												<input type="text" class="form-control" id="projects" name="projects" required>
+												<span class="label">Project Handeled Count</span>
+											</label>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-holder">
+											<label class="form-row-inner">
+												<input type="text" class="form-control" id="awards" name="awards" required>
+												<span class="label">Awards Count</span>
+											</label>
+										</div>
+										<div class="form-holder">
+											<label class="form-row-inner">
+												<input type="text" class="form-control" id="experience" name="experience" required>
+												<span class="label">Experience Years</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</section>
+							<!-- SECTION 2 -->
+							<h2>
+								<p class="step-icon"><span>2</span></p>
+								<span class="step-text">Skills/Works</span>
+							</h2>
+							<section>
+								<div class="inner">
+									<div class="form-heading">
+										<h3>Professional Skills</h3>
+										<span>2/3</span>
+									</div>
+									<div class="form-images">
+										<img src="{% static 'details/images/wizard_v6.jpg' %}" alt="wizard_v6">
+									</div>
+									<div class="form-row">
+										<div class="form-holder form-holder-2">
+											<label for="room" class="special-label-1">Education Experience</label>
+
+											<div id = "edu_expo" name = "edu_expo">
+
+
+
+
+
+											</div>
+											
+											<a id="myLink" href="#" onclick="edu_add();return false;" style="color:rgb(51, 249, 134) ; font-size: small;">Click to add</a>
+											
+										</div>
+									</div>
+
+
+
+									<div class="form-row">
+										<div class="form-holder form-holder-2">
+											<label for="room" class="special-label-1">Work Experience</label>
+											
+											<div id = "work_expo" name = "work_expo">
+
+
+
+
+
+											</div>
+
+											<!-- <button>Add</button>
+											<button class="button-33" onclick="expo_add()">Add New</button> -->
+
+											<a id="myLink" href="#" onclick="expo_add();return false;" style="color:rgb(51, 249, 134) ; font-size: small;">Click to add</a>
+
+
+
+
+
+
+
+
+
+
+
+										</div>
+									</div>
+
+
+									<div class="form-row">
+										<div class="form-holder form-holder-2">
+											<label for="room" class="special-label-1">Skills</label>
+											
+											<div id = "skills_expo" name = "skills_expo">
+
+
+
+
+
+											</div>
+
+											<!-- <button>Add</button>
+											<button class="button-33" onclick="expo_add()">Add New</button> -->
+
+											<a id="myLink" href="#" onclick="skills_add();return false;" style="color:rgb(51, 249, 134) ; font-size: small;">Click to add</a>
+
+
+
+
+
+
+
+
+
+
+
+										</div>
+									</div>
+
+								</div>
+							</section>
+							<!-- SECTION 3 -->
+							<h2>
+								<p class="step-icon"><span>3</span></p>
+								<span class="step-text">Projects</span>
+							</h2>
+							<section>
+								<div class="inner">
+									<div class="form-heading">
+										<h3>Personal Projects</h3>
+										<span>3/3</span>
+									</div>
+									<div class="form-row">
+										<div class="form-holder form-holder-2">
+											<label for="room" class="special-label-1">Personal Projects</label>
+											
+											<div id = "project_expo" name = "project_expo">
+
+
+
+
+
+											</div>
+
+											<!-- <button>Add</button>
+											<button class="button-33" onclick="expo_add()">Add New</button> -->
+
+											<a id="myLink" href="#" onclick="project_add();return false;" style="color:rgb(51, 249, 134) ; font-size: small;">Click to add</a>
+
+
+
+											
+
+
+
+
+
+
+
+										</div>
+									</div>
+
+									<div class="form-row">
+										<input type="checkbox" id="equity" name="equity" value="equity">
+										<label for="vehicle1" style="color: white;">Equity Share</label><br>
+									</div>
+
+									<div class="form-row">
+										<input type="checkbox" id="freelance" name="freelance" value="freelance">
+										<label for="vehicle1" style="color: white;">Freelance</label><br>
+									</div>
+									
+
+								</div>
+							</section>
+						</div>
+					</form>
+
+
+
+				</div>
+			</div>
+		</div>
+		<script src="{% static 'details/js/jquery-3.3.1.min.js' %}"></script>
+		<script src="{% static 'details/js/jquery.steps.js' %}"></script>
+		<script src="{% static 'details/js/jquery-ui.min.js' %}"></script>
+		<script src="{% static 'details/js/main.js' %}"></script>
+	</body>
+
+
+
+
+
+
+
+
+
+<style>
+	.button-33 {
+  background-color: #c2fbd7;
+  border-radius: 100px;
+  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+  color: green;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-33:hover {
+  box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+</style>
+
+
+
+
+
+
+
+
+
+<script>
+
+	count = 1;
+	function expo_add()
+	{
+		var demo = document.getElementById('work_expo')
+		demo.innerHTML += '<div class="form-holder form-holder-2"><label for="room" class="special-label-1">  </label><div class="form-row"><div class="form-holder form-holder-2"><label class="form-row-inner"><input type="text" class="form-control" id="employer" name="employer" required><span class="label">Employer Name</span></label></div></div><div class="form-row"><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="role" name="role" required><span class="label">Role</span></label></div><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="years" name="years" required><span class="label">Years (Start Year - End Year format)</span></label></div></div><div class="form-row"><div class="form-holder form-holder-2"><label class="form-row-inner"><input type="text" class="form-control" id="role_describe" name="role_describe" required><span class="label">Role Description</span></label></div></div></div>'
+		count += 1
+	}
+	count2 = 1;
+
+	function edu_add()
+	{
+		var demo1 = document.getElementById('edu_expo')
+		demo1.innerHTML += '<div class="form-holder form-holder-2"><label for="room" class="special-label-1">Education Detail </label><div class="form-row"><div class="form-holder form-holder-2"><label class="form-row-inner"><input type="text" class="form-control" id="college" name="college" required><span class="label">College Name</span></label></div></div><div class="form-row"><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="degree" name="degree" required><span class="label">Degree</span></label></div><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="speacialization" name="speacialization" required><span class="label">Speacialization</span></label></div></div><div class="form-row"><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="cgpa" name="cgpa" required><span class="label">CGPA</span></label></div><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="education_year" name="education_year" required><span class="label">Years (Start Year - End Year format)</span></label></div></div>'
+		count2 += 1
+	}
+
+	count3 = 1;
+	function skills_add()
+	{
+		var demo2 = document.getElementById('skills_expo')
+		
+		demo2.innerHTML += '<div class="form-row"><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="skills' + String(count3) +'" name="skills' + String(count3) +'" required><span class="label">Skill</span></label></div><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="skills_rate' + String(count3) +'" name="skills_rate' + String(count3) +'" required><span class="label">Skill Rate(out of 10)</span></label></div></div>'
+
+		count3 += 1;
+	}
+
+	count4 = 1;
+
+	function project_add()
+	{
+		var demo3 = document.getElementById('project_expo')
+		
+		demo3.innerHTML += '<div class="form-row"><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="project_name' + String(count4) +'" name="project_name' + String(count4) +'" required><span class="label">Project Name</span></label></div><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="tech_used' + String(count4) +'" name="tech_used' + String(count4) +'" required><span class="label">Tech used</span></label></div></div><div class="form-row"><div class="form-holder form-holder-2"><label class="form-row-inner"><input type="text" class="form-control" id="about_project' + String(count4) +'" name="about_project' + String(count4) +'" required><span class="label">About</span></label></div></div><div class="form-row"><div class="form-holder form-holder-2"><label class="form-row-inner"><input type="text" class="form-control" id="link_project' + String(count4) +'" name="link_project' + String(count4) +'" required><span class="label">link to project</span></label></div></div>'
+
+		count4 += 1;
+	}
+
+	var project_json = {};
+	var skill_json = {};
+	var work_json = {};
+	var education_json = {};
+	
+	
+	function time_to_submit()
+	{
+		var i;
+		for(i=1;i<count;i++)
+		{
+			var temp = {};
+			temp["employer"] = document.getElementById("employer" + String(i));
+			temp["role"] = document.getElementById("role" + String(i));
+			temp["years"] = document.getElementById("years" + String(i));
+			temp["role_describe"] = document.getElementById("role_describe" + String(i));
+			var a = JSON.stringify(temp);
+			work_json[i] = a;
+		}
+
+		for(i=1;i<count2;i++)
+		{
+			var temp = {};
+			temp["college"] = document.getElementById("college" + String(i));
+			temp["degree"] = document.getElementById("degree" + String(i));
+			temp["speacialization"] = document.getElementById("speacialization" + String(i));
+			temp["cgpa"] = document.getElementById("cgpa" + String(i));
+			temp["education_year"] = document.getElementById("education_year" + String(i));
+			var a = JSON.stringify(temp);
+			education_json[i] = a;
+		}
+
+
+		for(i=1;i<count3;i++)
+		{
+			var temp = {};
+			temp["skills"] = document.getElementById("skills" + String(i));
+			temp["skills_rate"] = document.getElementById("skills_rate" + String(i));
+			var a = JSON.stringify(temp);
+			skill_json[i] = a;
+		}
+
+		for(i=1;i<count4;i++)
+		{
+			var temp = {};
+			temp["project_name"] = document.getElementById("project_name" + String(i));
+			temp["tech_used"] = document.getElementById("tech_used" + String(i));
+			temp["link_project"] = document.getElementById("link_project" + String(i));
+			temp["about_project"] = document.getElementById("about_project" + String(i));
+			var a = JSON.stringify(temp);
+			project_json[i] = a;
+		}
+
+		console.log(project_json);
+		console.log(skill_json);
+		console.log(education_json);
+		console.log(work_json);
+		
+	}
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+ 

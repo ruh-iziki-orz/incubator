@@ -1,0 +1,312 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="colorlib.com">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'details_new/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" href="{% static 'details_new/vendor/nouislider/nouislider.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'details_new/css/style.css' %}">
+</head>
+
+<body>
+
+    <div class="main">
+
+        <div class="container">
+            <form method="POST" id="signup-form" class="signup-form" action="/demo">
+                {% csrf_token %}
+                <div>
+                    <h3>Personal info</h3>
+                    <fieldset>
+                        <h2>Personal information</h2>
+                        <p class="desc">Please enter your infomation and proceed to next step so we can build your account</p>
+                        <div class="fieldset-content">
+                            <div class="form-row">
+                                <label class="form-label">Name</label>
+                                <div class="form-flex">
+                                    <div class="form-group">
+                                        <input type="text" name="first_name" id="first_name" required>
+                                        <span class="text-input">First</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="last_name" id="last_name" required>
+                                        <span class="text-input">Last</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="year_work" class="form-label">Experience Years</label>
+                                <input type="text" name="experience" id="experience" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="text" name="phone" id="phone" required>
+                            </div>
+                            <div class="form-date">
+                                <label for="birth_date" class="form-label">Birth Date</label>
+                                <div class="form-date-group">
+                                    <div class="form-date-item">
+                                        <select id="birth_month" name="birth_month" required></select>
+                                        <span class="text-input">MM</span>
+                                    </div>
+                                    <div class="form-date-item">
+                                        <select id="birth_date" name="birth_date" required></select>
+                                        <span class="text-input">DD</span>
+                                    </div>
+                                    <div class="form-date-item">
+                                        <select id="birth_year" name="birth_year" required></select>
+                                        <span class="text-input">YYYY</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="ssn" class="form-label">About</label>
+                                <input type="text" name="about" id="about" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ssn" class="form-label">Address</label>
+                                <input type="text" name="address" id="address" required>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <h3>Social Connections</h3>
+                    <fieldset>
+                        <h2>Add Links to your social account</h2>
+                        <p class="desc">Please enter your infomation and proceed to next step so we can build your account</p>
+                        <div class="fieldset-content">
+                            
+                            <div class="form-group">
+                                <label for="ssn" class="form-label">LinkedIn</label>
+                                <input type="text" name="linkedin" id="linkedin" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ssn" class="form-label">twitter</label>
+                                <input type="text" name="twitter" id="twitter" />
+                            </div>
+                            <div class="form-group">
+                                <label for="ssn" class="form-label">Skype</label>
+                                <input type="text" name="instagram" id="instagram" />
+                            </div>
+                            <div class="form-group">
+                                <label for="ssn" class="form-label">Projects Handeled</label>
+                                <input type="text" name="projects" id="projects" />
+                            </div>
+                            <div class="form-group">
+                                <label for="ssn" class="form-label">Awards Count</label>
+                                <input type="text" name="awards" id="awards" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ssn" class="form-label">Clients Count</label>
+                                <input type="text" name="clients" id="clients" required>
+                            </div>
+                            
+                            
+
+
+                        </div>
+                    </fieldset>
+
+                    <h3>Equity Work</h3>
+                    <fieldset>
+                        <h2>Equity/Freelancer work</h2>
+                        <p class="desc">Everything will be negotiable</p>
+                        <div class="fieldset-content">
+                            
+                            <div class="donate-us">
+                                <div class="price_slider ui-slider ui-slider-horizontal">
+                                    <div id="slider-margin"></div>
+                                    <p class="your-money">
+                                        percentage equity required :
+                                        <span class="money" id="value-lower"></span>
+                                        <span class="money" id="value-upper"></span>
+                                        <input type="hidden" name = "equity" id = "equity">
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ssn" class="form-label">FreeLance Available</label>
+                                <select id="freelance" name="freelance">
+                                    <option value="Available" selected>Avaliable</option>
+                                    <option value="Only Equity Work">ONLY EQUITY WORK</option>
+                                </select>
+                                
+                            </div>
+
+
+
+
+
+
+
+
+
+
+                        </div>
+
+                    </fieldset>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    
+
+
+    <script>
+
+        count = 1;
+        function expo_add()
+        {
+            var demo = document.getElementById('work_expo')
+            demo.innerHTML += '<div class="form-holder form-holder-2"><label for="room" class="special-label-1">Work Experience ' + String(count) +'</label><div class="form-row"><div class="form-holder form-holder-2"><label class="form-row-inner"><input type="text" class="form-control" id="employer' + String(count) +'" name="employer' + String(count) +'" required><span class="label">Employer Name</span></label></div></div><div class="form-row"><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="role' + String(count) +'" name="role' + String(count) +'" required><span class="label">Role</span></label></div><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="years' + String(count) +'" name="years' + String(count) +'" required><span class="label">Years (Start Year - End Year format)</span></label></div></div><div class="form-row"><div class="form-holder form-holder-2"><label class="form-row-inner"><input type="text" class="form-control" id="role_describe' + String(count) +'" name="role_describe' + String(count) +'" required><span class="label">Role Description</span></label></div></div></div>'
+            count += 1
+        }
+        count2 = 1;
+    
+        function edu_add()
+        {
+            var demo1 = document.getElementById('edu_expo')
+            demo1.innerHTML += '<div class="form-holder form-holder-2"><label for="room" class="special-label-1">Education Detail ' + String(count2) +'</label><div class="form-row"><div class="form-holder form-holder-2"><label class="form-row-inner"><input type="text" class="form-control" id="college' + String(count2) +'" name="college' + String(count2) +'" required><span class="label">College Name</span></label></div></div><div class="form-row"><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="degree' + String(count2) +'" name="degree' + String(count2) +'" required><span class="label">Degree</span></label></div><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="speacialization' + String(count2) +'" name="speacialization' + String(count2) +'" required><span class="label">Speacialization</span></label></div></div><div class="form-row"><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="cgpa' + String(count2) +'" name="cgpa' + String(count2) +'" required><span class="label">CGPA</span></label></div><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="education_year' + String(count2) +'" name="education_year" required><span class="label">Years (Start Year - End Year format)</span></label></div></div>'
+            count2 += 1
+        }
+    
+        count3 = 1;
+        function skills_add()
+        {
+            var demo2 = document.getElementById('skills_expo')
+            
+            demo2.innerHTML += '<div class="form-row"><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="skills' + String(count3) +'" name="skills' + String(count3) +'" required><span class="label">Skill</span></label></div><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="skills_rate' + String(count3) +'" name="skills_rate' + String(count3) +'" required><span class="label">Skill Rate(out of 10)</span></label></div></div>'
+    
+            count3 += 1;
+        }
+    
+        count4 = 1;
+    
+        function project_add()
+        {
+            var demo3 = document.getElementById('project_expo')
+            
+            demo3.innerHTML += '<div class="form-row"><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="project_name' + String(count4) +'" name="project_name' + String(count4) +'" required><span class="label">Project Name</span></label></div><div class="form-holder"><label class="form-row-inner"><input type="text" class="form-control" id="tech_used' + String(count4) +'" name="tech_used' + String(count4) +'" required><span class="label">Tech used</span></label></div></div><div class="form-row"><div class="form-holder form-holder-2"><label class="form-row-inner"><input type="text" class="form-control" id="about_project' + String(count4) +'" name="about_project' + String(count4) +'" required><span class="label">About</span></label></div></div><div class="form-row"><div class="form-holder form-holder-2"><label class="form-row-inner"><input type="text" class="form-control" id="link_project' + String(count4) +'" name="link_project' + String(count4) +'" required><span class="label">link to project</span></label></div></div>'
+    
+            count4 += 1;
+        }
+    
+        var project_json = {};
+        var skill_json = {};
+        var work_json = {};
+        var education_json = {};
+        
+        
+        function time_to_submit()
+        {
+            var i;
+            for(i=1;i<count;i++)
+            {
+                var temp = {};
+                temp["employer"] = document.getElementById("employer" + String(i));
+                temp["role"] = document.getElementById("role" + String(i));
+                temp["years"] = document.getElementById("years" + String(i));
+                temp["role_describe"] = document.getElementById("role_describe" + String(i));
+                var a = JSON.stringify(temp);
+                work_json[i] = a;
+            }
+    
+            for(i=1;i<count2;i++)
+            {
+                var temp = {};
+                temp["college"] = document.getElementById("college" + String(i));
+                temp["degree"] = document.getElementById("degree" + String(i));
+                temp["speacialization"] = document.getElementById("speacialization" + String(i));
+                temp["cgpa"] = document.getElementById("cgpa" + String(i));
+                temp["education_year"] = document.getElementById("education_year" + String(i));
+                var a = JSON.stringify(temp);
+                education_json[i] = a;
+            }
+    
+    
+            for(i=1;i<count3;i++)
+            {
+                var temp = {};
+                temp["skills"] = document.getElementById("skills" + String(i));
+                temp["skills_rate"] = document.getElementById("skills_rate" + String(i));
+                var a = JSON.stringify(temp);
+                skill_json[i] = a;
+            }
+    
+            for(i=1;i<count4;i++)
+            {
+                var temp = {};
+                temp["project_name"] = document.getElementById("project_name" + String(i));
+                temp["tech_used"] = document.getElementById("tech_used" + String(i));
+                temp["link_project"] = document.getElementById("link_project" + String(i));
+                temp["about_project"] = document.getElementById("about_project" + String(i));
+                var a = JSON.stringify(temp);
+                project_json[i] = a;
+            }
+    
+            console.log(project_json);
+            console.log(skill_json);
+            console.log(education_json);
+            console.log(work_json);
+            
+        }
+    
+    
+    
+    
+    
+    </script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- JS -->
+    <script src="{% static 'details_new/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'details_new/vendor/jquery-validation/dist/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'details_new/vendor/jquery-validation/dist/additional-methods.min.js' %}"></script>
+    <script src="{% static 'details_new/vendor/jquery-steps/jquery.steps.min.js' %}"></script>
+    <script src="{% static 'details_new/vendor/minimalist-picker/dobpicker.js' %}"></script>
+    <script src="{% static 'details_new/vendor/nouislider/nouislider.min.js' %}"></script>
+    <script src="{% static 'details_new/vendor/wnumb/wNumb.js' %}"></script>
+    <script src="{% static 'details_new/js/main.js' %}"></script>
+
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/638fa2dab0d6371309d2f4ea/1gjkh89sa';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+
+</html>
